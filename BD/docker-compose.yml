@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  postgres:
+    container_name: postgres_hackadeal
+    image: postgres:9.4
+    environment:
+      POSTGRES_USER: hackadeal
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: hackadeal
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres-hackadeal:/var/lib/postgresql/data
+      - ./schema-data.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  postgres-hackadeal:
